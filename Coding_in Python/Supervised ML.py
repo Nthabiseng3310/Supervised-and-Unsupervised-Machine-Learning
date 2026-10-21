@@ -291,3 +291,88 @@ encoded_df = pd.get_dummies(df, columns=["Gender", "Admission_Type", "Readmissio
 
 # Display cleaner and smaller encoded dataset
 display(encoded_df)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC **Scalling**
+
+# COMMAND ----------
+
+#importing liabraries
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+# COMMAND ----------
+
+#data ingestion
+df = pd.DataFrame(
+    {
+        "Age": [20, 40, 50, 60],
+        "Salary": [10000, 20000, 30000, 40000]
+    }
+)
+display(df)
+
+# COMMAND ----------
+
+#initiate the standard scaler
+scaler=StandardScaler()
+
+# COMMAND ----------
+
+#Scaling both columns
+scaled_data=scaler.fit_transform(df)
+
+# COMMAND ----------
+
+#applying the scaler
+df_scaled = pd.DataFrame(scaled_data,
+                         columns=df.columns).round(2)
+
+
+# COMMAND ----------
+
+display(df_scaled)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ##Normalization_min&max
+
+# COMMAND ----------
+
+#importing liabraries
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import minmax_scale
+
+# COMMAND ----------
+
+#data ingestion
+df = pd.DataFrame(
+    {
+        "Age": [20, 40, 50, 60],
+        "Salary": [10000, 20000, 30000, 40000]
+    }
+)
+display(df)
+
+# COMMAND ----------
+
+#initiate the standard scaler
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+# COMMAND ----------
+
+#scale both columns
+scaled_data=scaler.fit_transform(df)
+
+# COMMAND ----------
+
+#introducing the scaler
+df_scaled=pd.DataFrame(scaled_data,
+                       columns=df.columns).round(2)
+display(df_scaled)
